@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="drums"> 
+    <div data-d="k" class="kick"></div>
+    <div data-d="s" class="snare"></div>
+    <div data-d="h" class="hi-hat"></div>
+    <div data-d="v" class="tom-1"></div>
+    <div data-d="b" class="tom-2"></div> 
+    <div data-d="n" class="tom-3"></div>
+    <div data-d="c" class="crash"></div>
+  </div>
+  <audio data-a="k" src="drums/kick.mp3"></audio>
+  <audio data-a="s" src="drums/snare.mp3"></audio>
+  <audio data-a="h" src="drums/hi-hat.mp3"></audio>
+  <audio data-a="v" src="drums/tom1.mp3"></audio>
+  <audio data-a="b" src="drums/tom2.mp3"></audio>
+  <audio data-a="n" src="drums/tom3.mp3"></audio>
+  <audio data-a="c" src="drums/crash.mp3"></audio>
+  <div class="contentText">
+    <ul>
+   <li>Нажмите клавишу "K"</li>
+   <li>Нажмите клавишу "S"</li>
+   <li>Нажмите клавишу "H"</li>
+   <li>Нажмите клавишу "V"</li>
+   <li>Нажмите клавишу "B"</li>
+   <li>Нажмите клавишу "N"</li>
+   <li>Нажмите клавишу "C"</li>
+  </ul>
+  </div>
+  <script>
+document.addEventListener('keydown', function(e){
+  let key = e.key;
+  let drum = document.querySelector('[data-d='+key+']' );
+  let audio = document.querySelector('[data-a='+key+']' );
+  drum.classList.add("hit");
+  setTimeout(()=>{
+    drum.classList.remove('hit');
+  },100);
+  audio.currentTime = 0;
+  audio.play();
+});
+
+  </script>
+</body>
+</html>
